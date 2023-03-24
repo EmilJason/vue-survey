@@ -44,7 +44,7 @@ app.get('/post/:name', (req,res)=>{
     })
 })
     
-app.get('/add/:name/:question/:answer',(req,res)=>{
+app.post('/add/:name/:question/:answer',(req,res)=>{
     console.log('Add called');
      try {
         let {name,question,answer}= req.params
