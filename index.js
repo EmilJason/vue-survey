@@ -17,6 +17,12 @@ connection.connect(err=>{
     err ? console.log(err.message) : console.log('connnected');;
 })
 
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next()
+  })
+
 console.log(process.env.host);
 
 app.get('/post',(req,res)=>{
