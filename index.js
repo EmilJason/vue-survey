@@ -8,7 +8,9 @@ const cors = require('cors')
 const PORT = process.env.PORT || 1995
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}))
 app.use(express.urlencoded({extended: false}))
 
 const connection = mysql.createConnection(process.env.URI)
