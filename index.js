@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 1995
 
 const app = express()
 app.use(cors({
-    origin: ['http://localhost:5173','https://vue-survey.netlify.app'],
+    origin: ['http://localhost:5173','https://vue-survey.netlify.app','*'],
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     
 }))
