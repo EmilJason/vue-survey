@@ -65,7 +65,7 @@ app.get('/post/:name', (req,res)=>{
     
 // })
 
-app.get('/add',(req,res)=>{
+app.post('/add',(req,res)=>{
     let {name, question, answer} = req.body
     console.log('Add called');
      try {
