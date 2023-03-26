@@ -14,6 +14,7 @@ app.use(cors({
     
 }))
 app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 
 const connection = mysql.createConnection(process.env.URI)
@@ -46,8 +47,26 @@ app.get('/post/:name', (req,res)=>{
    
 })
     
-app.get('/add/:name/:question/:answer',(req,res)=>{
-    let {name, question, answer} = req.params
+// app.get('/add/:name/:question/:answer',(req,res)=>{
+//     let {name, question, answer} = req.params
+//     console.log('Add called');
+//      try {
+        
+//         let insertQuery = `INSERT INTO surveytable (name, question, answer) VALUES ('${name}','${question}','${answer}')`
+  
+//         let query = connection.query(insertQuery,(err,result)=>{
+//             if(err) throw err.message
+//             console.log(result);
+//             res.send(query.values)
+//         })
+//      } catch (error) {
+//         console.log(error);
+//      } 
+    
+// })
+
+app.get('/add',(req,res)=>{
+    let {name, question, answer} = req.body
     console.log('Add called');
      try {
         
