@@ -28,7 +28,7 @@ console.log(process.env.host);
 
 app.get('/post',(req,res)=>{
     
-    const query = 'SELECT * FROM surveytable'
+    const query = 'SELECT * FROM survey'
     connection.query(query, (err, result)=>{
         err && console.log(err.message);
         res.json(result)
@@ -39,7 +39,7 @@ app.get('/post',(req,res)=>{
 app.get('/post/:name', (req,res)=>{
     
     let name = req.params.name
-    let getByName = `SELECT * FROM surveytable WHERE name='${name}'`
+    let getByName = `SELECT * FROM survey WHERE name='${name}'`
     let result = connection.query(getByName,(err,result)=>{
         err && console.log(err.message);
         res.send(result)
@@ -52,7 +52,7 @@ app.get('/post/:name', (req,res)=>{
 //     console.log('Add called');
 //      try {
         
-//         let insertQuery = `INSERT INTO surveytable (name, question, answer) VALUES ('${name}','${question}','${answer}')`
+//         let insertQuery = `INSERT INTO survey (name, question, answer) VALUES ('${name}','${question}','${answer}')`
   
 //         let query = connection.query(insertQuery,(err,result)=>{
 //             if(err) throw err.message
@@ -66,11 +66,11 @@ app.get('/post/:name', (req,res)=>{
 // })
 
 app.post('/add',(req,res)=>{
-    let {name, question, answer} = req.body
+    let {name, data} = req.body
     console.log('Add called');
      try {
         
-        let insertQuery = `INSERT INTO surveytable (name, question, answer) VALUES ('${name}','${question}','${answer}')`
+        let insertQuery = `INSERT INTO survey (name, data) VALUES ('${name}','${data}')`
   
         let query = connection.query(insertQuery,(err,result)=>{
             if(err) throw err.message
